@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('//fonts.googleapis.com/css?family=Ubuntu');
+
+.App{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+}
+header{
+  background-color: #F8F9FA;
+  width: 100vw;
+  opacity: 1;
+}
+.grid-character{
+  display: grid;
+  grid-template-columns: repeat(3, 270px);
+}

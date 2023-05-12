@@ -1,0 +1,15 @@
+.unclicked{
+    color: black;
+  }
+  .clicked{
+    color: #0b5ed7;
+    border-bottom: 3px solid;
+    border-color: #0b5ed7;
+    padding-bottom: 7px;
+    font-weight: bolder;
+    padding-right: 5px;
+    padding-left: 3px;
+    transition-property: border, color;
+    transition-duration: .15s;
+    transition-timing-function: ease-in-out;
+  }
