@@ -41,7 +41,7 @@ const Home = () => {
         <div>
             <h1 className="text-center text-[2.8rem] mt-4">Characters</h1>
             <Search setPage={setPage} setSearch={setSearch}/>
-            <div className="-ml-[100px] flex space-x-10 justify-center">
+            <div className=" flex space-x-10 justify-center">
                 <Filters setSpeciess={setSpeciess} setGenderr={setGenderr} setStatuss={setStatuss} setPage={setPage}/>
                 <Cards results={results}/>
             </div>
