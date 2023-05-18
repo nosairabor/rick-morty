@@ -16,7 +16,7 @@ const Location = () => {
     const [results, setResults] = useState<any[]>([]);
     const {name, dimension, type, residents} = userData;
 
-    console.log(results);
+    // console.log(results);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +25,7 @@ const Location = () => {
                 residents.map((x: any) => axios.get(x).then((res) => res.data))
             );
             setResults(residentData);
-            console.log(residentData);
+            // console.log(residentData);
           }
         };
     
@@ -67,7 +67,7 @@ const Location = () => {
                     <SelectInput total={126} setId={setId} name="Location"/>
                 </div>
                 
-                <Cards results={results}/>
+                <Cards page="/location/" results={results}/>
             </div>
             
         </div>

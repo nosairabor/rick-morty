@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getCharacters,getEpisodes,getLocations } from './Action';
+import { getCharacters,getEpisodes,getLocations,getCharacterById } from './Action';
 
 interface UserState {
     data: any;
@@ -56,6 +56,21 @@ const userSlice = createSlice({
             state.data = action.payload;
         });
         builder.addCase(getLocations.rejected, (state, action)=>{
+            state.loading=false;
+            state.error = action.error;
+        });
+
+
+
+        builder.addCase(getCharacterById.pending,(state)=>{
+            state.loading = true;
+            state.loading= null;
+        });
+        builder.addCase(getCharacterById.fulfilled, (state,action)=>{        //
+            state.loading = false;
+            state.data = action.payload;
+        });
+        builder.addCase(getCharacterById.rejected, (state, action)=>{
             state.loading=false;
             state.error = action.error;
         });

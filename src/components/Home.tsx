@@ -43,7 +43,7 @@ const Home = () => {
             <Search setPage={setPage} setSearch={setSearch}/>
             <div className="-ml-[100px] flex space-x-10 justify-center">
                 <Filters setSpeciess={setSpeciess} setGenderr={setGenderr} setStatuss={setStatuss} setPage={setPage}/>
-                <Cards results={results}/>
+                <Cards page="/" results={results}/>
             </div>
             <Pagination info={info} page={page} setPage={setPage}/>
 

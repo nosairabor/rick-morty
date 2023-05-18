@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
+
 interface Props{
     results:any;
+    page: any;
 }
-const Cards: React.FC<Props> = ({ results })  => {
+const Cards: React.FC<Props> = ({ results, page })  => {
     let display;
     
     if(results){
         display = results.map((x: any) =>{
             const {id, name,image,location, status} = x
             return(
-                <div key={id} className="border-2 rounded-[10px] border-blue border-solid relative">
+                <Link to={`${page}${id}`} key={id} className="border-2 rounded-[10px] border-blue border-solid relative">
                     <div className="">
                         <img src={image} className="rounded-t-lg"/>
                         <div className="flex flex-col pt-2 px-2 ">
@@ -41,7 +44,7 @@ const Cards: React.FC<Props> = ({ results })  => {
                             
                         </div>
                     </div>
-                </div>
+                </Link>
             );
         });
 

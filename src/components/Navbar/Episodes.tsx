@@ -16,7 +16,7 @@ const Episodes = () => {
     const [results, setResults] = useState<any[]>([]);
     const {name, air_date,characters} = userData;
 
-    console.log(results);
+    // console.log(results);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +25,7 @@ const Episodes = () => {
               characters.map((x: any) => axios.get(x).then((res) => res.data))
             );
             setResults(characterData);
-            console.log(characterData);
+            // console.log(characterData);
           }
         };
     
@@ -63,7 +63,7 @@ const Episodes = () => {
                     <SelectInput total={51} setId={setId} name="Episode"/>
                 </div>
                 
-                <Cards results={results}/>
+                <Cards page="/episode/" results={results}/>
             </div>
             
         </div>

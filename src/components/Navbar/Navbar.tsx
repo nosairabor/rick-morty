@@ -32,7 +32,7 @@ const Navbar = () => {
                 <Link to="/" className="text-3xl font-thin mt-2 ml-14 pb-2"> Rick & Morty<span className="text-blue"> WiKi</span></Link>
                 <div className="flex space-x-5 mt-2 mr-14 text-[21px] pb-2">
                     <Link to="/" className={divClasses[0]} onClick={() => handleToggleClick(0)}>Characters</Link>
-                    <Link to="/episodes" className={divClasses[1]} onClick={() => handleToggleClick(1)}>Episodes</Link>
+                    <Link to="/episode" className={divClasses[1]} onClick={() => handleToggleClick(1)}>Episodes</Link>
                     <Link to="/location" className={divClasses[2]} onClick={() => handleToggleClick(2)}>Location</Link>
                 </div>
             </header>
