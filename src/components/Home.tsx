@@ -20,7 +20,7 @@ const Home = () => {
 
     const {info, results} = userData
     
-    console.log(results);
+    // console.log(results);
     useEffect(() => {
         dispatch(getCharacters({pageNumber: page,search:search, statuss:statuss,genderr:genderr,speciess:speciess}));
     },[dispatch, page,search,statuss,genderr,speciess]);

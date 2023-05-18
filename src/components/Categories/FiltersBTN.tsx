@@ -12,7 +12,7 @@ const FiltersBTN:React.FC<PropType> = ({items, name, index,task,setPage}) => {
         setPage(1);
         task(items);
     };
-    console.log(task)
+    // console.log(task)
     return ( 
         <div className="">
             <style>

@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getCharacters } from './Action';
+import { getCharacters,getEpisodes,getLocations } from './Action';
 
 interface UserState {
     data: any;
@@ -21,7 +21,7 @@ const userSlice = createSlice({
             state.loading = true;
             state.loading= null;
         });
-        builder.addCase(getCharacters.fulfilled, (state,action)=>{
+        builder.addCase(getCharacters.fulfilled, (state,action)=>{    //characters
             state.loading = false;
             state.data = action.payload;
         });
@@ -29,6 +29,37 @@ const userSlice = createSlice({
             state.loading=false;
             state.error = action.error;
         });
+        
+        
+        
+        builder.addCase(getEpisodes.pending,(state)=>{
+            state.loading = true;
+            state.loading= null;
+        });
+        builder.addCase(getEpisodes.fulfilled, (state,action)=>{        //episodes
+            state.loading = false;
+            state.data = action.payload;
+        });
+        builder.addCase(getEpisodes.rejected, (state, action)=>{
+            state.loading=false;
+            state.error = action.error;
+        });
+
+
+        
+        builder.addCase(getLocations.pending,(state)=>{
+            state.loading = true;
+            state.loading= null;
+        });
+        builder.addCase(getLocations.fulfilled, (state,action)=>{        //locations
+            state.loading = false;
+            state.data = action.payload;
+        });
+        builder.addCase(getLocations.rejected, (state, action)=>{
+            state.loading=false;
+            state.error = action.error;
+        });
+
     },
     
 });
