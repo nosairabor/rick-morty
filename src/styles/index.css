@@ -21,6 +21,14 @@ header{
 .grid-character{
   display: grid;
   grid-template-columns: repeat(3, 270px);
+  margin-top: 0px;
 }
-
-
+@media (max-width:850px) {
+  .grid-character{
+    display: grid;
+    grid-template-columns: repeat(1, 302px);
+    align-content: center;
+    margin-top: 20px;
+  }
+ 
+}

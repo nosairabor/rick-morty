@@ -22,17 +22,22 @@ const Species: React.FC<StatusProps> = ({ isOpen, toggleAccordion,setSpeciess,se
         setPage(1);
         setSpeciess(status);
     };
+
+    const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
+    const episodesClass = isXlScreen
+        ? "flex space-x-[175px] h-[52px] cursor-pointer"
+        :"flex space-x-[240px] h-[52px] cursor-pointer"
+    ;
     return ( 
         
         <div className="">
                 <div className="item ">
-                    <div className={`title flex space-x-[165px] cursor-pointer 
-                        h-[52px] ${isOpen?'bg-[#e7f1ff]':'bg-white'}  `} 
+                    <div className={`${episodesClass} ${isOpen?'bg-[#e7f1ff]':'bg-white'}  `} 
                         onClick={() => toggleAccordion('Species')}
                     >
 
                         <p className={`p-3 ${isOpen?'text-blue':'text-black'} `}>Species</p>
-                        <div className="m-4">
+                        <div className="mt-4 xl:m-4">
                             {isOpen ? (
                                 <BsChevronUp  />
                             ) : (

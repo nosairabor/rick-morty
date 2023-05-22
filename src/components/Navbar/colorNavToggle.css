@@ -13,3 +13,6 @@
     transition-duration: .15s;
     transition-timing-function: ease-in-out;
   }
+  .mobile-navbar{
+    transition: ease-in-out 3s;
+  }

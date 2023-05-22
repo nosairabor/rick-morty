@@ -31,17 +31,27 @@ const Home = () => {
     // if (error) {
     //     return <div>Error: {error.message}</div>;
     // }
-      
     if (!userData) {
         return null;
     }
+    
     const status = ["Alive", "Dead", "Unknown"];
+
+    const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
+    const filtersContainerClass = isXlScreen
+        ? "-ml-[100px] flex flex-row  space-x-10 justify-center"
+        : "ml-0 flex flex-col items-center"
+    ;
+    const headingClass = isXlScreen 
+        ? "text-[2.8rem] text-center mt-4"
+        : "text-center text-[28px] mt-4"
+    ;
     
     return (
         <div>
-            <h1 className="text-center text-[2.8rem] mt-4">Characters</h1>
+            <h1 className={headingClass}>Characters</h1>
             <Search setPage={setPage} setSearch={setSearch}/>
-            <div className="-ml-[100px] flex space-x-10 justify-center">
+            <div className={filtersContainerClass}>
                 <Filters setSpeciess={setSpeciess} setGenderr={setGenderr} setStatuss={setStatuss} setPage={setPage}/>
                 <Cards page="/" results={results}/>
             </div>

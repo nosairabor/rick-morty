@@ -1,10 +1,12 @@
 import { useState } from "react";
 import './colorNavToggle.css';
 import { Link } from "react-router-dom";
+import { BsList,BsXLg } from 'react-icons/bs';  //import hamburger-icon
 
 const Navbar = () => {
     const [isToggled, setIsToggled] = useState<boolean[]>([true, false, false]);
     const [lastClickedIndex, setLastClickedIndex] = useState<number>(0);
+    const [hamburger, setHamburger] = useState(false);
 
     const handleToggleClick = (index: number) => {
         setIsToggled(prevState => {
@@ -25,15 +27,44 @@ const Navbar = () => {
         index === lastClickedIndex ? ToggledDivClass: divClass
     );
 
+    const hamburgerToggle = () =>{     //function to toggle
+        setHamburger(!hamburger);     // the hamburger icon
+    }
+
     return (
         <div className="container">
             
-            <header className="flex justify-between p-3">
-                <Link to="/" className="text-3xl font-thin mt-2 ml-14 pb-2"> Rick & Morty<span className="text-blue"> WiKi</span></Link>
-                <div className="flex space-x-5 mt-2 mr-14 text-[21px] pb-2">
+            <header className="xl:flex justify-between p-3">
+                <Link to="/" className="text-[24px] md:text-3xl font-thin mt-2 ml-0 pb-2 md:ml-14">
+                     Rick & Morty<span className="text-blue"> WiKi</span>
+                </Link>
+                
+
+                {/* desktop navbar */}
+                <div className="hidden xl:flex space-x-5 mt-2 mr-14 text-[21px] pb-2">
                     <Link to="/" className={divClasses[0]} onClick={() => handleToggleClick(0)}>Characters</Link>
                     <Link to="/episode" className={divClasses[1]} onClick={() => handleToggleClick(1)}>Episodes</Link>
                     <Link to="/location" className={divClasses[2]} onClick={() => handleToggleClick(2)}>Location</Link>
+                </div>
+                 
+                <div className="relative xl:hidden">
+                    <div className=" flex justify-end font-extrabold text-3xl mr-2 mt-[-30px] xl:hidden" onClick={hamburgerToggle}>
+                        {hamburger ? (
+                            <BsXLg/>
+                        ) : (
+                            <BsList/>
+                        )}
+                    </div>
+
+                    
+                    {/* mobile navbar */}
+                    <div className={`relative font-light flex justify-start flex-col text-[21px] mt-2
+                        xl:hidden ${hamburger? "flex":"hidden"} mobile-navbar`}
+                        >
+                        <Link to="/" className={`mb-2 -${divClasses[0]}`} onClick={() => handleToggleClick(0)}>Characters</Link>
+                        <Link to="/episode" className={`mb-2 -${divClasses[1]}`} onClick={() => handleToggleClick(1)}>Episodes</Link>
+                        <Link to="/location" className={`mb-2 -${divClasses[2]}`} onClick={() => handleToggleClick(2)}>Location</Link>
+                    </div>
                 </div>
             </header>
 

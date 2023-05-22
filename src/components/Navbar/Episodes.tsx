@@ -45,7 +45,11 @@ const Episodes = () => {
     if (!userData) {
         return null;
     }
-
+    const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
+    const episodesClass = isXlScreen
+        ? "-ml-[100px] flex space-x-10 justify-center mt-6"
+        :"ml-0 flex flex-col mt-6 items-center"
+    ;
     return (
         <div className="">
             <h1 className="text-center text-[2.4rem] mt-4">
@@ -57,7 +61,7 @@ const Episodes = () => {
                 <span className="">{air_date ==="" ? "Unknown": air_date}</span>
             </p>
 
-            <div className="-ml-[100px] flex space-x-10 justify-center mt-6">
+            <div className={episodesClass}>
                 <div>
                     <p className="text-[24px] text-center">Pick Episode</p>
                     <SelectInput total={51} setId={setId} name="Episode"/>

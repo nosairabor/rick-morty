@@ -19,12 +19,16 @@ const Status: React.FC<StatusProps> = ({ isOpen, toggleAccordion,setPage,setStat
         setPage(1);
         setStatuss(status);
     };
+    const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
+    const episodesClass = isXlScreen
+        ? "flex space-x-[175px] h-[52px] cursor-pointer"
+        :"flex space-x-[252px] h-[52px] cursor-pointer"
+    ;
     return ( 
         
         <div>
                 <div className="item">
-                    <div className={`flex space-x-[175px] h-[52px] 
-                        cursor-pointer ${isOpen?'bg-[#e7f1ff]':'bg-white'} `} 
+                    <div className={`${episodesClass} ${isOpen?'bg-[#e7f1ff]':'bg-white'} `} 
                         onClick={() => toggleAccordion('Status')}>
 
                         <p className={`p-3 ${isOpen?'text-blue':'text-black'} `}>Status</p>

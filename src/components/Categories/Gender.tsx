@@ -20,12 +20,18 @@ const Gender: React.FC<StatusProps> = ({ isOpen, toggleAccordion, setGenderr,set
         setPage(1);
         setGenderr(status);
     };
+
+    const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;
+    const episodesClass = isXlScreen
+        ? "flex space-x-[175px] h-[52px] cursor-pointer"
+        :"flex space-x-[244px] h-[52px] cursor-pointer"
+    ;
+
     return ( 
         
         <div className="">
                 <div className="item">
-                    <div className={`title flex space-x-[168px] h-[52px]
-                        cursor-pointer ${isOpen?'bg-[#e7f1ff]':'bg-white'} `}
+                    <div className={`${episodesClass} ${isOpen?'bg-[#e7f1ff]':'bg-white'} `}
                         onClick={() => toggleAccordion('Gender')}
                     >
 

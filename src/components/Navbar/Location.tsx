@@ -46,6 +46,11 @@ const Location = () => {
         return null;
     }
 
+    const isXlScreen = window.matchMedia("(min-width: 1280px)").matches;        //mediaquery function,
+    const locationClass = isXlScreen                                            //*because tailwind's break-
+        ? "-ml-[100px] flex space-x-10 justify-center mt-6"                     //points are clashing
+        :"ml-0 flex flex-col mt-6 items-center"
+    ;
     return (
         <div className="">
             <h1 className="text-center text-[2.4rem] mt-4">
@@ -61,7 +66,7 @@ const Location = () => {
                 <span className="">{type ==="" ? "Unknown": type}</span>
             </p>
 
-            <div className="-ml-[100px] flex space-x-10 justify-center mt-6">
+            <div className={locationClass}>
                 <div>
                     <p className="text-[24px] text-center">Pick Episode</p>
                     <SelectInput total={126} setId={setId} name="Location"/>

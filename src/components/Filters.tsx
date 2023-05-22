@@ -35,7 +35,7 @@ const Filters:React.FC<PropType> = ({setStatuss,setPage,setGenderr,setSpeciess})
         Clear Filters
       </div>
 
-      <div className=" w-[300px] border border-gray2 rounded-[5px] grid grid-cols-1 justify-center divide-y divide-gray2">
+      <div className="w-[350px] xl:w-[300px] border border-gray2 rounded-[5px] grid grid-cols-1 justify-center divide-y divide-gray2">
         <Status isOpen={openAccordion === 'Status'} toggleAccordion={handleAccordionToggle} 
           setStatuss={setStatuss} setPage={setPage}/>
         <Species isOpen={openAccordion === 'Species'} toggleAccordion={handleAccordionToggle}
