@@ -1,24 +1,29 @@
 import { useState } from "react";
 import './colorNavToggle.css';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsList,BsXLg } from 'react-icons/bs';  //import hamburger-icon
 
 const Navbar = () => {
     const [isToggled, setIsToggled] = useState<boolean[]>([true, false, false]);
     const [lastClickedIndex, setLastClickedIndex] = useState<number>(0);
     const [hamburger, setHamburger] = useState(false);
+    const location = useLocation();
 
     const handleToggleClick = (index: number) => {
-        setIsToggled(prevState => {
-        const newState = [...prevState];
-        newState[index] = !newState[index];
-        if (lastClickedIndex >= 0 && lastClickedIndex !== index) {
-            newState[lastClickedIndex] = false;
-        }
-        setLastClickedIndex(index);
-        return newState;
-        });
+        setHamburger(false);
     };
+
+    // const handleToggleClick = (index: number) => {
+    //     setIsToggled(prevState => {
+    //     const newState = [...prevState];
+    //     newState[index] = !newState[index];
+    //     if (lastClickedIndex >= 0 && lastClickedIndex !== index) {
+    //         newState[lastClickedIndex] = false;
+    //     }
+    //     setLastClickedIndex(index);
+    //     return newState;
+    //     });
+    // };
 
     const divClass = 'unclicked';
     const ToggledDivClass = 'color-toggle-div clicked';
@@ -30,21 +35,46 @@ const Navbar = () => {
     const hamburgerToggle = () =>{     //function to toggle
         setHamburger(!hamburger);     // the hamburger icon
     }
-
     return (
         <div className="container">
             
             <header className="xl:flex justify-between p-3">
-                <Link to="/" className="text-[24px] md:text-3xl font-thin mt-2 ml-0 pb-2 md:ml-14">
+                <Link to="/" className="text-[24px] md:text-3xl font-thin mt-2 ml-0 pb-2 xl:ml-14">
                      Rick & Morty<span className="text-blue"> WiKi</span>
                 </Link>
                 
 
                 {/* desktop navbar */}
                 <div className="hidden xl:flex space-x-5 mt-2 mr-14 text-[21px] pb-2">
-                    <Link to="/" className={divClasses[0]} onClick={() => handleToggleClick(0)}>Characters</Link>
-                    <Link to="/episode" className={divClasses[1]} onClick={() => handleToggleClick(1)}>Episodes</Link>
-                    <Link to="/location" className={divClasses[2]} onClick={() => handleToggleClick(2)}>Location</Link>
+                    <Link to="/" 
+                    className={
+                        location.pathname === "/" || location.pathname.startsWith("/characters")
+                          ? "color-toggle-div clicked"
+                          : "unclicked"
+                    }
+                    onClick={() => handleToggleClick(0)}>
+                        Characters
+                    </Link>
+
+                    <Link to="/episode" 
+                    className={
+                        location.pathname === "/episode" || location.pathname.startsWith("/episode/")
+                          ? "color-toggle-div clicked"
+                          : "unclicked"
+                    }
+                    onClick={() => handleToggleClick(1)}>
+                        Episodes
+                    </Link>
+
+                    <Link to="/location"
+                    className={
+                        location.pathname === "/location" || location.pathname.startsWith("/location/")
+                          ? "color-toggle-div clicked"
+                          : "unclicked"
+                    }
+                    onClick={() => handleToggleClick(2)}>
+                        Location
+                    </Link>
                 </div>
                  
                 <div className="relative xl:hidden">
