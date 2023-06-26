@@ -91,9 +91,20 @@ const Navbar = () => {
                     <div className={`relative font-light flex justify-start flex-col text-[21px] mt-2
                         xl:hidden ${hamburger? "flex":"hidden"} mobile-navbar`}
                         >
-                        <Link to="/" className={`mb-2 -${divClasses[0]}`} onClick={() => handleToggleClick(0)}>Characters</Link>
-                        <Link to="/episode" className={`mb-2 -${divClasses[1]}`} onClick={() => handleToggleClick(1)}>Episodes</Link>
-                        <Link to="/location" className={`mb-2 -${divClasses[2]}`} onClick={() => handleToggleClick(2)}>Location</Link>
+                        <Link to="/" className={`mb-2 ${location.pathname === "/" || location.pathname.startsWith("/characters")
+                          ? "color-toggle-div clicked" : "unclicked"}`}
+                          onClick={() => handleToggleClick(0)}>Characters</Link>
+                        
+                        <Link to="/episode" className={`mb-2 ${location.pathname === "/episode" || location.pathname.startsWith("/episode/")
+                          ? "color-toggle-div clicked"
+                          : "unclicked"}`} 
+                        onClick={() => handleToggleClick(1)}>Episodes</Link>
+                        
+                        <Link to="/location" 
+                        className={`mb-2 -${location.pathname === "/location" || location.pathname.startsWith("/location/")
+                        ? "color-toggle-div clicked"
+                        : "unclicked"}`} 
+                        onClick={() => handleToggleClick(2)}>Location</Link>
                     </div>
                 </div>
             </header>
