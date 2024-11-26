@@ -11,7 +11,7 @@ const Cards: React.FC<Props> = ({ results, page })  => {
         display = results.map((x: any) =>{
             const {id, name,image,location, status} = x
             return(
-                <Link to={`${page}${id}`} key={id} className="border-2 border-blue xl:border-2
+                <Link to={`${page}${id}`} key={id} className="w-full border-2 border-blue xl:border-2
                  rounded-[10px] border-blue border-solid relative">
                     <div className="">
                         <img src={image} className="rounded-t-lg"/>

@@ -46,12 +46,12 @@ const Home = () => {
         ? "text-[2.8rem] text-center mt-4"
         : "text-center text-[28px] mt-4"
     ;
-    
+    console.log(genderr)
     return (
         <div>
             <h1 className={headingClass}>Characters</h1>
             <Search setPage={setPage} setSearch={setSearch}/>
-            <div className={filtersContainerClass}>
+            <div className={`${filtersContainerClass}`}>
                 <Filters setSpeciess={setSpeciess} setGenderr={setGenderr} setStatuss={setStatuss} setPage={setPage}/>
                 <Cards page="/" results={results}/>
             </div>

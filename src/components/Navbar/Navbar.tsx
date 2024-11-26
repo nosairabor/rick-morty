@@ -4,33 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import { BsList,BsXLg } from 'react-icons/bs';  //import hamburger-icon
 
 const Navbar = () => {
-    const [isToggled, setIsToggled] = useState<boolean[]>([true, false, false]);
-    const [lastClickedIndex, setLastClickedIndex] = useState<number>(0);
     const [hamburger, setHamburger] = useState(false);
     const location = useLocation();
 
     const handleToggleClick = (index: number) => {
         setHamburger(false);
     };
-
-    // const handleToggleClick = (index: number) => {
-    //     setIsToggled(prevState => {
-    //     const newState = [...prevState];
-    //     newState[index] = !newState[index];
-    //     if (lastClickedIndex >= 0 && lastClickedIndex !== index) {
-    //         newState[lastClickedIndex] = false;
-    //     }
-    //     setLastClickedIndex(index);
-    //     return newState;
-    //     });
-    // };
-
-    const divClass = 'unclicked';
-    const ToggledDivClass = 'color-toggle-div clicked';
-
-    const divClasses = isToggled.map((color, index) =>
-        index === lastClickedIndex ? ToggledDivClass: divClass
-    );
 
     const hamburgerToggle = () =>{     //function to toggle
         setHamburger(!hamburger);     // the hamburger icon
